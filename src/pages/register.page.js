@@ -9,6 +9,7 @@ export class RegisterPage
        this.emailInput = page.getByRole('textbox', { name: 'Email' });
        this.passwordInput = page.getByRole('textbox', { name: 'Password' });
        this.singupButton = page.getByRole('button', { name: 'Sign up' });
+      
     }
 
     // Бизнесовые сценарии
@@ -24,4 +25,3 @@ export class RegisterPage
           await this.singupButton.click();
     }
 }
-

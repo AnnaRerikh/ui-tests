@@ -8,12 +8,11 @@ export class LoginPage
        this.loginButton = page.getByRole('button', { name: 'Login' });
     }
 
-    async signin () {
+     async signin(user) {
+        const { email, password } = user;
 
-        await this.emailInput.click();
-        await this.emailInput.fill('carsturka@getnada.com');
-        await this.passwordInput.click();
-        await this.passwordInput.fill('12345678');
+        await this.emailInput.fill(email);
+        await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
 }

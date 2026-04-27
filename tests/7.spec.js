@@ -9,8 +9,14 @@ import { YourSettingsPage } from '../src/pages/yoursettings.page'
 let person = {
     picture: faker.image.avatarGitHub (),
     username: faker.person.firstName ('female'),
-    bio: faker.person.bio ()
+    bio: faker.person.bio (),
+    password: '12345678'
 }
+
+const user = {
+    email: 'carsturka@getnada.com',
+    password: '12345678'
+};
 
 // Редактирование профиля через авторизацию
 test('Редактирование своего профиля через авторизацию', async ({ page }) => {
@@ -23,7 +29,7 @@ test('Редактирование своего профиля через авт
     
     await main.open();
     await main.gotoLogin();
-    await login.signin();
+    await login.signin(user);
     await yourfeed.gotoMyProfile();
     await myprofile.waitForProfileLoaded();
     await myprofile.gotoMyProfileSettings();
@@ -31,7 +37,7 @@ test('Редактирование своего профиля через авт
     await yourfeed.gotoLogout();
     await main.open();
     await main.gotoLogin();
-    await login.signin();
+    await login.signin(user);
     await yourfeed.gotoMyProfile();
 
     

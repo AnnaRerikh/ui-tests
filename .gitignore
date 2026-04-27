@@ -8,4 +8,8 @@ test-results/
 .env
 .env.*
 .DS_Store
+tests/1.spec.js
+tests/2.spec.js
+tests/3.spec.js
+tests/4.spec.js
 tests/5.spec.js

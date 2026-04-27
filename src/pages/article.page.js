@@ -12,9 +12,11 @@ export class ArticlePage
        this.postCommentButton = page.getByRole('button', { name: 'Post Comment' });
        this.commentText = page.locator('.card-text');
        this.thashCommentButton = page.locator('button:has(i.ion-trash-a)');
+       this.commentCard = page.locator('.card');
+       this.deleteCommentButton = page.locator('button:has(i.ion-trash-a)');
     }
 
-  getTitle() {
+ getTitle() {
         return this.title;
     } 
  getMainText() {
@@ -43,16 +45,14 @@ export class ArticlePage
         return this.commentText.filter({ hasText: text });
    }
 
-    async deleteComment(comment) {
-  const deleteButton = this.page
-        .locator('.card')
+ async deleteComment(comment) {
+    const deleteButton = this.commentCard
         .filter({ hasText: comment })
-        .locator('button:has(i.ion-trash-a)');
-        
-        this.page.once('dialog', async dialog => {
-            await dialog.accept();
-        });
-        
-        await deleteButton.click();
-    }
+        .locator(this.deleteCommentButton);
+    
+    this.page.once('dialog', async dialog => {
+        await dialog.accept();
+    });
+    await deleteButton.click();
+   }
 }

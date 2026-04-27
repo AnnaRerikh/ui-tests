@@ -25,7 +25,7 @@ export class YourSettingsPage
         await this.bioInput.click();
         await this.bioInput.fill(bio);
         await this.passwordInput.click();
-        await this.passwordInput.fill('12345678');
+        await this.passwordInput.fill(password);
         await this.updateSettingsButton.click()
     }
 
